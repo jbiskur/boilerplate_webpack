@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="test"></div>
+<button id="button">Click Me</button>
 <script src="assets/app.bundle.js"></script>
 </body>
 </html>

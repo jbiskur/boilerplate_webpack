@@ -38,7 +38,7 @@ module.exports = {
         test: /\.scss$/,
         use: production
           ? extractPlugin.extract({ use: ["css-loader", "sass-loader"] })
-          : ["style-loader", "css-loader", "sass-loader"]
+          : ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
       }
     ]
   },
@@ -48,12 +48,12 @@ module.exports = {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
     })
-  ]
+  ],
+  devtool: (!production) ? "#eval-source-map" : false
 };
 
 if (!production)
 {
-  module.exports.devtool = "#eval-source-map";
 
   module.exports.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
   module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());

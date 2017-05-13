@@ -4,6 +4,12 @@ console.log("HELLO WORLD!!!");
 
 document.getElementById("test").innerHTML = "HELLO WORLD";
 
+var button = document.getElementById("button");
+
+button.addEventListener("click", function (event) {
+  console.log("I was clicked!");
+});
+
 /* if we are in production link external css file */
 if (process.env.NODE_ENV && process.env.NODE_ENV.trim() === "production")
 {
