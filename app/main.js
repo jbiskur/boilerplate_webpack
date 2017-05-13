@@ -1,14 +1,26 @@
 import "./styles/main.scss";
+import $ from "jquery";
 
-console.log("HELLO WORLD!!!");
+import ko from "knockout";
+import Rx from "rxjs";
 
-document.getElementById("test").innerHTML = "HELLO WORLD";
+import Handlebars from "handlebars";
 
-var button = document.getElementById("button");
+import template from "./templates/test_template";
 
-button.addEventListener("click", function (event) {
+console.log(Rx);
+
+console.log(ko);
+
+console.log("HELLO WORLD!!");
+
+$("#test").html("HELLO WORLD");
+
+$("#button").click(function(event) {
   console.log("I was clicked!");
 });
+const context = { name: "this is a test name!"};
+$("#hb").html(template(context));
 
 /* if we are in production link external css file */
 if (process.env.NODE_ENV && process.env.NODE_ENV.trim() === "production")
@@ -22,6 +34,8 @@ if (process.env.NODE_ENV && process.env.NODE_ENV.trim() === "production")
 else
 {
   console.log("development mode");
+
+  /* enables hot reloading of modules */
   if (module.hot) {
     module.hot.accept();
   }
